@@ -1,9 +1,10 @@
 import './App.css';
 import Navbar from './componets/Navbar';
 import TextForm from './componets/TextForm';
-// import About from './componets/About';
+import About from './componets/About';
 import React,{useState} from 'react';
 import Alert from './componets/Alert';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 
 function App() {
@@ -33,18 +34,40 @@ const toggal =() =>{
     callalert("dark mode disebal","Success");
   }
 }
+const redtoggal =() =>{
+  if (mode === "light"){
+    setmode('red')
+    document.body.style.backgroundColor = "red";
+    callalert("red mode enebal","success");
+
+  }else{
+    setmode('light')
+    document.body.style.backgroundColor = "white";
+    callalert("dark mode disebal","Success");
+  }
+}
 
   return (
+    
    <>
- 
-   <Navbar title = "Karan" about ="about us" toggle={toggal} mode = {mode} />
-   <Alert  alert={alert}/>
-   <div className="container"  >
   
-  <TextForm callalert={callalert} mode = {mode}/>
+  
+   <div className="container"  >
+   <BrowserRouter>
+   <Navbar title = "Karan" about ="about us" redtoggle={redtoggal} toggle={toggal} mode = {mode} />
+   <Alert  alert={alert}/>
+   <Routes>
+   
+     <Route exact path="/home" element={<TextForm callalert={callalert} mode = {mode}/>} />
+     <Route exact path="/about" element={<About/>} />
+     </Routes>
+ </BrowserRouter>
+          
+          
    </div>
    
    </>
+   
   );
 }
 

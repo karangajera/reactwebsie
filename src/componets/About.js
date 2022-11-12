@@ -7,22 +7,22 @@ export default function About() {
  }
  )
 const [btntext, setbtntext] = useState("Enebal dark mode")
- const toggal = ()=>{
-    if (setmystyl.color === 'white'){
+ const settoggal = ()=>{
+    if (mystyl.color === 'white'){
 
       setmystyl ({
         color: 'black',
     backgroundColor:'white'
     
       })
-      setbtntext('Enebal light mode')
+      setbtntext('Enebal dark mode')
     }
     else{
         setmystyl ({
             color: 'white',
         backgroundColor:'black'
           })
-          setbtntext('Enebal black mode')
+          setbtntext('Enebal light mode')
     }
 
    
@@ -67,7 +67,7 @@ const [btntext, setbtntext] = useState("Enebal dark mode")
             </div>
             </div>
         </div>
-        <button type="button" onClick={toggal} class="btn btn-primary">{btntext}</button>
+        <button type="button" onClick={settoggal} class="btn btn-primary">{btntext}</button>
     </div>
   )
 }
